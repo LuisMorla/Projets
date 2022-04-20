@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PaginaDeRegistros.Models.Registros>
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register</h2>
+
+<div class="row" style="margin-top: 30px">
+
+    <div class="col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Lista de contactos</h4>
+            </div>
+            <div class="panel-body">
+                <a class="btn bnt-seccess" href="@Url.Action("CrearNuevo","Contacto")">Crear nuevo</a>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Cedula</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th style="width" 150px></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (PaginaDeRegistros.Models.Registros item in Model)
+                            {
+
+                                <tr>
+                                    <td>@item.Cedula</td>
+                                    <td>@item.Nombre</td>
+                                    <td>@item.Apellidos</td>
+                                    <td>
+
+                                        
+                                        <a class="btn bnt-danger btn-sm" href="@Url.Action("Eliminar","Contacto", new { ID = item.ID})" style="background-color: red; color: white; font: bold" ;>Eliminar</a>
+
+                                    </td>
+                                </tr>
+
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
