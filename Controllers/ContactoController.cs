@@ -33,6 +33,8 @@ namespace PaginaDeRegistros.Controllers
         public ActionResult Register()
         {
 
+            Lista = new List<Registros>();
+
 
             using (SqlConnection conexion = new SqlConnection(conectar))
             {
@@ -43,6 +45,7 @@ namespace PaginaDeRegistros.Controllers
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
 
+                
                     while (dr.Read())
                     {
 
@@ -54,11 +57,7 @@ namespace PaginaDeRegistros.Controllers
                         contador.Nombre = dr["Nombre"].ToString();
                         contador.Apellidos = dr["Apellidos"].ToString();
 
-
-
                         Lista.Add(contador);
-
-
 
                     }
 
